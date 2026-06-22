@@ -1,0 +1,919 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotless Home — Lithia Springs, GA</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F4EE;
+    --forest: #1C3A2B;
+    --sage: #4A7C59;
+    --leaf: #7FB069;
+    --warm-white: #FDFBF7;
+    --charcoal: #2A2A2A;
+    --muted: #6B6B6B;
+    --border: #E2DDD6;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(253,251,247,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--forest);
+    letter-spacing: -0.02em;
+  }
+  .nav-cta {
+    background: var(--forest);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--sage); }
+
+  /* HERO */
+  .hero {
+    min-height: 100svh;
+    padding: 120px 24px 80px;
+    background: var(--forest);
+    display: flex; flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(127,176,105,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--leaf);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.6rem, 9vw, 4.2rem);
+    font-weight: 300;
+    line-height: 1.08;
+    color: #fff;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--leaf);
+  }
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    max-width: 340px;
+    margin-bottom: 40px;
+    line-height: 1.65;
+  }
+  .hero-actions {
+    display: flex; flex-direction: column; gap: 12px;
+    max-width: 300px;
+  }
+  .btn-primary {
+    background: var(--leaf);
+    color: var(--forest);
+    border: none;
+    padding: 16px 28px;
+    border-radius: 100px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: transform 0.15s, background 0.2s;
+    display: block;
+  }
+  .btn-primary:hover { transform: translateY(-1px); background: #8fbe77; }
+  .btn-secondary {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 15px 28px;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: border-color 0.2s, color 0.2s;
+    display: block;
+  }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
+
+  .hero-stats {
+    display: flex; gap: 32px;
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream);
+    padding: 20px 24px;
+    display: flex; gap: 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-bottom: 1px solid var(--border);
+  }
+  .trust-bar::-webkit-scrollbar { display: none; }
+  .trust-item {
+    display: flex; align-items: center; gap: 8px;
+    white-space: nowrap;
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .trust-item span.icon { font-size: 1rem; }
+
+  /* SECTIONS */
+  section { padding: 72px 24px; }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--forest);
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .service-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 16px;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .service-card:hover { border-color: var(--sage); transform: translateY(-1px); }
+  .service-card.featured {
+    background: var(--forest);
+    border-color: var(--forest);
+    color: #fff;
+  }
+  .service-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .service-card.featured .service-name { color: #fff; }
+  .service-includes {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .service-card.featured .service-includes { color: rgba(255,255,255,0.6); }
+  .service-badge {
+    font-size: 0.7rem;
+    font-weight: 500;
+    background: var(--leaf);
+    color: var(--forest);
+    padding: 4px 10px;
+    border-radius: 100px;
+    white-space: nowrap;
+    margin-top: 4px;
+    display: inline-block;
+  }
+  .service-price {
+    text-align: right; flex-shrink: 0;
+  }
+  .price-from { font-size: 0.7rem; color: var(--muted); }
+  .service-card.featured .price-from { color: rgba(255,255,255,0.5); }
+  .price-amount {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--forest);
+    line-height: 1;
+  }
+  .service-card.featured .price-amount { color: var(--leaf); }
+
+  /* HOW IT WORKS */
+  .how-bg { background: var(--cream); }
+  .steps { display: flex; flex-direction: column; gap: 0; }
+  .step {
+    display: flex; gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--leaf);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 36px;
+  }
+  .step-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin-bottom: 6px;
+  }
+  .step-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* REVIEWS */
+  .reviews { background: var(--forest); }
+  .reviews .section-title { color: #fff; }
+  .reviews .section-sub { color: rgba(255,255,255,0.55); }
+  .review-cards { display: flex; flex-direction: column; gap: 16px; }
+  .review-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 22px;
+  }
+  .review-stars { color: var(--leaf); font-size: 0.9rem; margin-bottom: 12px; }
+  .review-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .reviewer { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+
+  /* BOOKING FORM */
+  .booking-section { background: var(--warm-white); }
+  .form-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 24px;
+  }
+  .form-group { margin-bottom: 16px; }
+  label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--forest);
+    margin-bottom: 6px;
+  }
+  input, select, textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--sage); }
+  textarea { resize: none; height: 90px; }
+  .form-submit {
+    width: 100%;
+    background: var(--forest);
+    color: #fff;
+    border: none;
+    padding: 16px;
+    border-radius: 100px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+  }
+  .form-submit:hover { background: var(--sage); }
+  .form-note {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    padding: 40px 24px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    color: #fff;
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+  .footer-location { font-size: 0.82rem; color: rgba(255,255,255,0.4); margin-bottom: 24px; }
+  .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 24px; }
+  .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.5); text-decoration: none; }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+
+  /* STICKY BOTTOM CTA (mobile) */
+  .sticky-cta {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(253,251,247,0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    padding: 14px 24px;
+    z-index: 99;
+    display: flex; gap: 12px;
+  }
+  .sticky-cta a {
+    flex: 1;
+    text-align: center;
+    padding: 13px;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .sticky-book {
+    background: var(--forest);
+    color: #fff;
+  }
+  .sticky-call {
+    background: transparent;
+    color: var(--forest);
+    border: 1.5px solid var(--forest);
+  }
+
+  /* Spacing for sticky bottom */
+  body { padding-bottom: 80px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Spotless Home</div>
+  <a href="#book" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Lithia Springs · Douglas County · Atlanta Area</div>
+  <h1>Your home,<br><em>truly clean.</em></h1>
+  <p class="hero-sub">Professional home cleaning you can book in minutes. We handle everything — you just come home to a spotless house.</p>
+  <div class="hero-actions">
+    <a href="#book" class="btn-primary">Get a Free Quote</a>
+    <a href="#services" class="btn-secondary">See Pricing</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">5.0★</div>
+      <div class="stat-label">Avg. rating</div>
+    </div>
+    <div>
+      <div class="stat-num">48h</div>
+      <div class="stat-label">Quick booking</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Satisfaction</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="icon">✓</span> Background-checked cleaners</div>
+  <div class="trust-item"><span class="icon">✓</span> Insured & bonded</div>
+  <div class="trust-item"><span class="icon">✓</span> Eco-friendly products</div>
+  <div class="trust-item"><span class="icon">✓</span> Satisfaction guaranteed</div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What we offer</div>
+  <h2 class="section-title">Pick your clean</h2>
+  <p class="section-sub">Every service includes bathrooms, kitchen, floors, and all living areas.</p>
+  <div class="services-grid">
+
+    <div class="service-card featured">
+      <div>
+        <div class="service-name">Standard Clean</div>
+        <div class="service-includes">Bathrooms · Kitchen · Floors<br>Dusting · Living areas</div>
+        <span class="service-badge">Most popular</span>
+      </div>
+      <div class="service-price">
+        <div class="price-from">from</div>
+        <div class="price-amount">$130</div>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div>
+        <div class="service-name">Deep Clean</div>
+        <div class="service-includes">Everything in Standard +<br>Inside appliances · Baseboards<br>Inside cabinets · Detail work</div>
+      </div>
+      <div class="service-price">
+        <div class="price-from">from</div>
+        <div class="price-amount">$220</div>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div>
+        <div class="service-name">Move In / Out</div>
+        <div class="service-includes">Full property clean<br>Empty home specialty<br>Landlord-ready results</div>
+      </div>
+      <div class="service-price">
+        <div class="price-from">from</div>
+        <div class="price-amount">$280</div>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div>
+        <div class="service-name">Recurring Clean</div>
+        <div class="service-includes">Weekly or biweekly visits<br>Same team every time<br>Priority scheduling</div>
+        <span class="service-badge">Save 15%</span>
+      </div>
+      <div class="service-price">
+        <div class="price-from">from</div>
+        <div class="price-amount">$110</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-bg">
+  <div class="section-label">The process</div>
+  <h2 class="section-title">Three steps to a clean home</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">Book online in 2 minutes</div>
+        <div class="step-desc">Pick your service, date, and home size. We'll confirm within the hour.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">We show up, you relax</div>
+        <div class="step-desc">Our vetted cleaning team arrives on time with everything they need. No supervision required.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">Come home to spotless</div>
+        <div class="step-desc">You get a notification when we're done. Not happy with anything? We'll fix it free.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="section-label">What clients say</div>
+  <h2 class="section-title">Real results,<br>real people</h2>
+  <p class="section-sub">Homeowners across Douglas County trust us every week.</p>
+  <div class="review-cards">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Booked the deep clean before my in-laws visited. The team was thorough, fast, and my kitchen looked brand new. Worth every penny."</div>
+      <div class="reviewer">Jennifer M. · Lithia Springs, GA</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"I've tried three other services. This is the first time I didn't have to re-clean anything after they left. Recurring customer now."</div>
+      <div class="reviewer">Marcus T. · Douglasville, GA</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Got my full deposit back after move-out. Landlord literally asked who did the cleaning. Highly recommend."</div>
+      <div class="reviewer">Aisha R. · Villa Rica, GA</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section id="book" class="booking-section">
+  <div class="section-label">Get started</div>
+  <h2 class="section-title">Book your clean</h2>
+  <p class="section-sub">Fill out below and we'll confirm your appointment within the hour.</p>
+  <div class="form-card">
+    <div class="form-group">
+      <label>Your name</label>
+      <input type="text" placeholder="First and last name">
+    </div>
+    <div class="form-group">
+      <label>Phone number</label>
+      <input type="tel" placeholder="(404) 000-0000">
+    </div>
+    <div class="form-group">
+      <label>Service type</label>
+      <select>
+        <option value="">Select a service...</option>
+        <option>Standard Clean — from $130</option>
+        <option>Deep Clean — from $220</option>
+        <option>Move In / Out — from $280</option>
+        <option>Recurring Clean — from $110</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Home size</label>
+      <select>
+        <option value="">Select bedrooms...</option>
+        <option>1 bedroom</option>
+        <option>2 bedrooms</option>
+        <option>3 bedrooms</option>
+        <option>4+ bedrooms</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Preferred date</label>
+      <input type="date">
+    </div>
+    <div class="form-group">
+      <label>Your address</label>
+      <input type="text" placeholder="Lithia Springs, GA">
+    </div>
+    <div class="form-group">
+      <label>Anything we should know? <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+      <textarea placeholder="Pets, special instructions, areas to focus on..."></textarea>
+    </div>
+    <button class="form-submit">Request My Booking →</button>
+    <p class="form-note">We'll text or call you within 60 minutes to confirm.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Out & Clean</div>
+  <div class="footer-location">Lithia Springs · Douglas County · Atlanta Area</div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#book">Book Now</a>
+    <a href="tel:+16786681767">(678) 668-1767</a>
+  </div>
+  <div class="footer-copy">© 2026 Out & Clean. All rights reserved.</div>
+</footer>
+
+<!-- SOFIA CHAT WIDGET -->
+<style>
+  .chat-bubble {
+    position: fixed; bottom: 90px; right: 20px; z-index: 999;
+    width: 56px; height: 56px;
+    background: #1C3A2B;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+  }
+  .chat-bubble:hover { transform: scale(1.08); }
+  .chat-bubble svg { width: 26px; height: 26px; fill: #fff; }
+  .chat-badge {
+    position: absolute; top: -4px; right: -4px;
+    width: 18px; height: 18px;
+    background: #7FB069;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; color: #fff;
+  }
+  .chat-window {
+    position: fixed; bottom: 160px; right: 20px; z-index: 998;
+    width: 340px; max-height: 500px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.9) translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .chat-window.open {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+  .cw-header {
+    background: #1C3A2B;
+    padding: 14px 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .cw-avatar {
+    width: 36px; height: 36px;
+    background: #7FB069;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600; font-size: 13px; color: #1C3A2B;
+    flex-shrink: 0;
+  }
+  .cw-name { color: #fff; font-weight: 500; font-size: 14px; }
+  .cw-status { color: rgba(255,255,255,0.55); font-size: 11px; }
+  .cw-close {
+    margin-left: auto; background: none; border: none;
+    color: rgba(255,255,255,0.6); cursor: pointer; font-size: 20px;
+    line-height: 1; padding: 0;
+  }
+  .cw-messages {
+    flex: 1; overflow-y: auto;
+    padding: 14px; display: flex; flex-direction: column; gap: 8px;
+    background: #F7F4EE;
+    max-height: 320px;
+  }
+  .cw-msg-row { display: flex; gap: 6px; align-items: flex-end; }
+  .cw-msg-row.user { justify-content: flex-end; }
+  .cw-pic {
+    width: 24px; height: 24px; background: #7FB069; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 600; color: #1C3A2B; flex-shrink: 0;
+  }
+  .cw-msg {
+    max-width: 78%; padding: 8px 12px; font-size: 13px; line-height: 1.5;
+  }
+  .cw-msg.bot {
+    background: #fff; border: 1px solid #E2DDD6;
+    border-radius: 14px 14px 14px 3px; color: #2A2A2A;
+  }
+  .cw-msg.user {
+    background: #1C3A2B; color: #fff;
+    border-radius: 14px 14px 3px 14px;
+  }
+  .cw-typing {
+    display: flex; gap: 4px; align-items: center;
+    padding: 8px 12px; background: #fff;
+    border: 1px solid #E2DDD6; border-radius: 14px 14px 14px 3px;
+    width: fit-content;
+  }
+  .cw-typing span {
+    width: 5px; height: 5px; background: #aaa; border-radius: 50%;
+    animation: cwbounce 1s infinite;
+  }
+  .cw-typing span:nth-child(2) { animation-delay: 0.15s; }
+  .cw-typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes cwbounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-4px)} }
+  .cw-input-row {
+    padding: 10px 12px;
+    display: flex; gap: 8px; align-items: center;
+    background: #fff; border-top: 1px solid #E2DDD6;
+  }
+  .cw-input {
+    flex: 1; border: 1px solid #E2DDD6; border-radius: 100px;
+    padding: 8px 14px; font-size: 13px; outline: none;
+    font-family: 'Inter', sans-serif;
+    background: #F7F4EE; color: #2A2A2A;
+  }
+  .cw-input:focus { border-color: #4A7C59; }
+  .cw-send {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: #1C3A2B; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .cw-send:hover { background: #4A7C59; }
+  .cw-send svg { width: 14px; height: 14px; fill: #fff; }
+  @media (max-width: 400px) {
+    .chat-window { width: calc(100vw - 24px); right: 12px; }
+  }
+</style>
+
+<!-- Chat bubble button -->
+<div class="chat-bubble" onclick="toggleChat()" id="chatBubble">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+  <div class="chat-badge">1</div>
+</div>
+
+<!-- Chat window -->
+<div class="chat-window" id="chatWindow">
+  <div class="cw-header">
+    <div class="cw-avatar">SC</div>
+    <div>
+      <div class="cw-name">Sofia — Out & Clean</div>
+      <div class="cw-status">🟢 Online now</div>
+    </div>
+    <button class="cw-close" onclick="toggleChat()">×</button>
+  </div>
+  <div class="cw-messages" id="cwMessages"></div>
+  <div class="cw-input-row">
+    <input class="cw-input" id="cwInput" placeholder="Message Sofia..." />
+    <button class="cw-send" onclick="cwSend()">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+const SOFIA_KEY = 'YOUR_ANTHROPIC_API_KEY';
+
+const SOFIA_SYSTEM = `You are Sofia, a friendly booking agent for Out & Clean, a professional home cleaning service based in Lithia Springs, Georgia (Douglas County, Atlanta area).
+
+Your personality: warm, casual, conversational — like a real person texting. Use natural language and occasional emojis. Keep responses SHORT — 1-3 sentences max. Never say you are an AI or bot. If asked, say "haha nope, just me! 😄"
+
+About Out & Clean:
+- Service area: Lithia Springs, Douglasville, Mableton, Villa Rica, Douglas County
+- Products: eco-friendly, pet-safe (Method, Mrs. Meyer's)
+- Fully insured and bonded, background-checked cleaners
+- 100% satisfaction guarantee — free re-clean if not happy
+- Payment: Zelle or Cash App, collected before service
+- Rescheduling: 24 hours notice needed
+
+Pricing:
+- Standard Clean: 1bd $130 / 2bd $140 / 3bd $155 / 4bd+ $175
+- Deep Clean: 1bd $220 / 2bd $240 / 3bd $265 / 4bd+ $295
+- Move In/Out: 1bd $280 / 2bd $300 / 3bd $330 / 4bd+ $360
+- Recurring (weekly/biweekly): 1bd $110 / 2bd $120 / 3bd $130 / 4bd+ $145
+
+Booking flow — collect naturally in order:
+1. Customer name
+2. Service type
+3. Number of bedrooms
+4. Preferred date
+5. Full address (must include street number + street name + city — ask again if vague)
+6. Phone number (must be 10 digits — ask again if invalid)
+7. Confirm summary with total price, tell them someone will text within the hour`;
+
+let cwHistory = [];
+let cwTyping = false;
+
+function toggleChat() {
+  const win = document.getElementById('chatWindow');
+  const badge = document.querySelector('.chat-badge');
+  win.classList.toggle('open');
+  if (badge) badge.style.display = 'none';
+  if (win.classList.contains('open') && cwHistory.length === 0) {
+    cwBotMsg("Hey! 👋 I'm Sofia from Out & Clean. I can get you a quote and book your cleaning in just a few minutes. What's your name?");
+  }
+}
+
+function cwTypingDelay(text) {
+  const words = text.split(' ').length;
+  return Math.min(600 + words * 40 + Math.random() * 200, 1600);
+}
+
+function cwAddUser(text) {
+  const row = document.createElement('div');
+  row.className = 'cw-msg-row user';
+  const m = document.createElement('div');
+  m.className = 'cw-msg user';
+  m.textContent = text;
+  row.appendChild(m);
+  document.getElementById('cwMessages').appendChild(row);
+  cwScroll();
+}
+
+function cwBotMsg(text) {
+  const msgs = document.getElementById('cwMessages');
+  const tid = 'cwt-' + Date.now();
+  const tr = document.createElement('div');
+  tr.className = 'cw-msg-row';
+  tr.id = tid;
+  tr.innerHTML = '<div class="cw-pic">SC</div><div class="cw-typing"><span></span><span></span><span></span></div>';
+  msgs.appendChild(tr);
+  cwScroll();
+  setTimeout(() => {
+    const el = document.getElementById(tid);
+    if (el) el.remove();
+    const row = document.createElement('div');
+    row.className = 'cw-msg-row';
+    row.innerHTML = '<div class="cw-pic">SC</div>';
+    const m = document.createElement('div');
+    m.className = 'cw-msg bot';
+    m.innerHTML = text.replace(/\n/g, '<br>');
+    row.appendChild(m);
+    msgs.appendChild(row);
+    cwScroll();
+    cwTyping = false;
+    document.getElementById('cwInput').disabled = false;
+  }, cwTypingDelay(text));
+}
+
+function cwScroll() {
+  const msgs = document.getElementById('cwMessages');
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+async function cwAsk(userMsg) {
+  cwHistory.push({ role: 'user', content: userMsg });
+  cwTyping = true;
+  document.getElementById('cwInput').disabled = true;
+
+  try {
+    const res = await fetch('/.netlify/functions/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        messages: cwHistory
+      })
+    });
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || "Sorry, give me one sec! 😊";
+    cwHistory.push({ role: 'assistant', content: reply });
+    cwBotMsg(reply);
+  } catch (e) {
+    cwBotMsg("Hmm something went wrong on my end! Try again in a sec 😅");
+    cwTyping = false;
+    document.getElementById('cwInput').disabled = false;
+  }
+}
+
+function cwSend() {
+  if (cwTyping) return;
+  const val = document.getElementById('cwInput').value.trim();
+  if (!val) return;
+  document.getElementById('cwInput').value = '';
+  cwAddUser(val);
+  cwAsk(val);
+}
+
+document.getElementById('cwInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') cwSend();
+});
+</script>
+
+<!-- STICKY BOTTOM CTA -->
+<div class="sticky-cta">
+  <a href="#book" class="sticky-book">Book Now</a>
+  <a href="tel:+14045550000" class="sticky-call">📞 Call Us</a>
+</div>
+
+</body>
+</html>
